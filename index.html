@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Payment Page</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <style>
+      body {
+        background-color: #f8f9fa;
+      }
+      .rotate-90 {
+        transform: rotate(90deg);
+        transition: transform 0.3s ease;
+      }
+      .dropdown-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out, opacity 0.15s ease-out,
+          margin-top 0.15s ease-out;
+        opacity: 0;
+      }
+      .dropdown-content.open {
+        max-height: 500px; /* Adjust based on your content */
+        opacity: 1;
+        margin-top: 0.25rem;
+      }
+      .dropdown-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out, opacity 0.15s ease-out,
+          margin-top 0.15s ease-out;
+        opacity: 0;
+      }
+      .dropdown-content.open {
+        max-height: 500px; /* Adjust based on your content */
+        opacity: 1;
+        margin-top: 0.25rem;
+      }
+      .footer {
+        padding-top: 40px;
+        font-weight: 600;
+      }
+      .footer .footer-logo {
+        font-size: 24px;
+        font-weight: bold;
+        color: #e60000;
+      }
+      .footer .footer-logo span {
+        color: #000000;
+      }
+      .footer .footer-description {
+        margin-top: 10px;
+        color: #000000;
+      }
+      .footer .footer-social-icons a {
+        color: #e60000;
+        margin-right: 10px;
+        font-size: 20px;
+      }
+      .footer .footer-title {
+        font-size: 18px;
+        font-weight: bold;
+        color: #e60000;
+        margin-bottom: 20px;
+      }
+      .footer .footer-link {
+        color: #000000;
+        text-decoration: none;
+        display: block;
+        margin-bottom: 10px;
+      }
+      .footer .footer-link:hover {
+        text-decoration: underline;
+      }
+      .footer .footer-bottom {
+        background-color: #e60000;
+        color: #ffffff;
+        text-align: center;
+        padding: 10px 0;
+        margin-top: 40px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <nav
+        class="navbar navbar-expand-lg navbar-light bg-light d-flex flex-column fixed-top"
+      >
+        <div
+          class="d-none d-lg-flex justify-content-between align-items-center w-100 px-3"
+        >
+          <div class="d-flex align-items-center bg-white border px-2 py-1">
+            <a class="text-danger fw-bold text-decoration-none" href="#"
+              >DREAM</a
+            >
+            <a class="text-primary fw-bold text-decoration-none mx-2" href="#"
+              >EXPLORE</a
+            >
+            <a class="text-success fw-bold text-decoration-none" href="#"
+              >DISCOVER</a
+            >
+          </div>
+
+          <div class="d-flex align-items-center my-2">
+            <a
+              class="d-flex align-items-center text-success text-decoration-none me-2"
+              href="#"
+            >
+              <img
+                src="https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg"
+                alt="UK Flag"
+                width="40"
+                height="25"
+                class="me-1 rounded-circle"
+              />
+              <span class="fw-bold small">EN</span>
+              <i class="bi bi-caret-down-fill ms-1"></i>
+            </a>
+
+            <a class="btn btn-danger" href="#">Register / Login</a>
+          </div>
+        </div>
+
+        <div class="container-fluid bg-white py-1">
+          <!-- Logo and branding -->
+          <a
+            class="navbar-brand fw-bold text-danger d-flex align-items-center"
+            href="#"
+          >
+            <!-- <img
+              src=""
+              alt=""
+              width="30"
+              height="30"
+              class="d-inline-block align-text-top"
+            /> -->
+            <p class="m-0"><i class="fas fa-plane"></i> Wahanatravel</p>
+          </a>
+
+      
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+   
+          <div class="collapse navbar-collapse fw-bold" id="navbarNav">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <!-- Dihilangkan pada PC dan ditampilkan di mobile -->
+              <li class="nav-item d-lg-none">
+                <div
+                  class="d-flex align-items-center justify-content-between mt-2"
+                >
+                  <a
+                    class="d-flex align-items-center text-success text-decoration-none me-2"
+                    href="#"
+                  >
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg"
+                      alt="UK Flag"
+                      width="20"
+                      height="15"
+                      class="me-1"
+                    />
+                    <span class="fw-bold small">EN</span>
+                    <i class="bi bi-caret-down-fill ms-1"></i>
+                  </a>
+
+                  <a class="btn btn-danger" href="#">Register / Login</a>
+                </div>
+              </li>
+              <!-- Navbar items lainnya -->
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Promotion</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Flight</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Hotel</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Tour</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Cars Rental</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">M.I.C.E</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Travel Docs</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Career</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <div style="margin-top: 70px" class="d-none d-md-block"></div>
+
+      <div
+        style="margin-top: 20px"
+        class="container-fluid bg-danger w-100 pt-5"
+      >
+        <div class="container-fluid bg-danger w-100 py-4">
+          <div class="row justify-content-center g-2 w-100">
+            <div class="col-12 d-md-none">
+              <div
+                class="box bg-secondary text-white d-flex justify-content-center align-items-center"
+                style="height: 100px"
+              >
+                box iklan (mobile)
+              </div>
+            </div>
+
+            <div class="col-4 col-md-2 d-none d-md-block">
+              <div
+                class="box bg-secondary text-white d-flex justify-content-center align-items-center"
+                style="height: 100px"
+              >
+                box iklan 1
+              </div>
+            </div>
+            <div class="col-4 col-md-2 d-none d-md-block">
+              <div
+                class="box bg-secondary text-white d-flex justify-content-center align-items-center"
+                style="height: 100px"
+              >
+                box iklan 2
+              </div>
+            </div>
+            <div class="col-4 col-md-2 d-none d-md-block">
+              <div
+                class="box bg-secondary text-white d-flex justify-content-center align-items-center"
+                style="height: 100px"
+              >
+                box iklan 3
+              </div>
+            </div>
+            <div class="col-4 col-md-2 d-none d-md-block">
+              <div
+                class="box bg-secondary text-white d-flex justify-content-center align-items-center"
+                style="height: 100px"
+              >
+                box iklan 4
+              </div>
+            </div>
+            <div class="col-4 col-md-2 d-none d-md-block">
+              <div
+                class="box bg-secondary text-white d-flex justify-content-center align-items-center"
+                style="height: 100px"
+              >
+                box iklan 5
+              </div>
+            </div>
+            <div class="col-4 col-md-2 d-none d-md-block">
+              <div
+                class="box bg-secondary text-white d-flex justify-content-center align-items-center"
+                style="height: 100px"
+              >
+                box iklan 6
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="d-flex flex-column align-items-center">
+      <div class="d-flex justify-content-center align-items-center my-4 gap-4">
+        <div class="d-flex align-items-center">
+          <img
+            class="rounded-circle me-3 p-2"
+            style="background-color: #dadada"
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAARhJREFUWEft2DFKBEEQBdC3oLnmgommgqleR1HwEOodBEHwNuYGxmImojfQQF0ZZemd3Z5aemBGupNh6OLXn/+7q7tmYmBjMjA+Rk3oAueNopffz+n7shGN/8GKKBRNEI0fF6Fd3OAQ64UX/gfucIzHFLvNsm3cY7MwkRTuDXt4mZ1oI3SGq57J/MKfNE78pWsjNLsY++Y1t1sroUTysEJdCmDU1qX1KWdZJVQVag7lhYd0VagPhXL3oLQMpPHFt/1nsPCky+L/ExqcZUHH5sKLW1YJrdQtBGSrluXEGr9Cp7jOfWah+U5dxxYesFEo6SKYV+zjOdeXTed3cIsDrBUm9t50rkd46tK5Fs4fg4v8/Yghrxg9OEJfBnxwJTDF6vkAAAAASUVORK5CYII="
+            alt="booking"
+            width="40vw"
+            height="40vw"
+          />
+          <p class="mb-0 fw-bold" style="font-size: 2vw">BOOKING</p>
+        </div>
+
+        <div class="d-flex align-items-center">
+          <img
+            style="background-color: #dadada"
+            class="rounded-circle me-2 p-2"
+            width="40vw"
+            height="40vw"
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAOdJREFUWEftl00KwjAQRl/voAheRu/jQtyJiD+IuBAE8UJ6GFHxEGpARQLJJE2UFqfbyXz5+qaZTgoq9hQV84MakiqihGIJGWJjoAe0pOTE+AXYActPHbtkG2CQuFFs+gKYvJJsQ1egEauYuP4EtF2GboniZdPfYGxCauiJ1EmoLPJsedoYJZRKqPaEtA9JfUgJxRI6AHvhZHSBjnR6hHjwz3X+EJoJYiY+/VtDlStZYiWC053f0PkHw73t0jvCroBh8HvlWegd8g26EdAHmnn2c6ocgS2w9l2DvuxBltd5SGKkhGpH6A68dSIl80xBRgAAAABJRU5ErkJggg=="
+          />
+          <p class="mb-0 fw-bold" style="font-size: 2vw">PAYMENT METHOD</p>
+        </div>
+
+        <div class="d-flex align-items-center">
+          <img
+            style="background-color: #b01e1e"
+            class="rounded-circle me-2 p-2"
+            width="40vw"
+            height="40vw"
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAgZJREFUWEftlruKFEEUhr8/URPBQFG8oKuGPoEivoCpRqZioCCb7Yqo6xXxguArmJmZmYmiLyAIXliUXe+JIIiB8DtHaoay6e3p6ekeRtkOq+qc8/GfU9W/mLJPU8bDdAPZDsCzwElgc8fqfQbuSrqS1/lLIdu3gdmOQYrpL0k6118sAn0FNk4Y6KOkrSsBebAhdTpftktrFRX6v4Fsb5D0rWwEJq6Q7b3Ak3STrhahJgqUwWxJIHOSrudQEwMqgYn3Zr+kxU6AbMcVXS/pZUkb9gBPs0f1C3BQ0qtOWmZ7BngErEmF3vQL2d6VZmZ7WitVJjs//rW3/RzYVyyYQGOAt6W9D8AhSQPgrhTaDTzLWrIMHAHuA31l3gMHJL2revFbG2rbRai8bi2YCGgNKCULqMdZi2K5NkzrQCnhznSjYm5GgukEKCWNm3UPOCbp7SguodWWjVJ4pbOrQMNU/GcV+lTT3C/0DOWF7DcQj+It4OgwZUr2Ky3sNWCuRtI/QLbXpfMRs7ZGXNmRSpMflvYMcBrYVFFgoafGC+AmsKMhSLxddyRFjsFX28j3PHm06HyK/B4WpAASFuOEpHADjb+mQHnBH8Bl4IakX41JUuC4QA+AU5KWxgXpxzcFCoDjkh62BdIUaD5d74uSfrYNE/lGUegw8LrMS7cJVhuozaJVuVaBhin9G+z3NTT9+4FvAAAAAElFTkSuQmCC"
+          />
+          <p class="mb-0 fw-bold" style="font-size: 2vw">COMPLETED</p>
+        </div>
+      </div>
+
+      <div
+        class="d-flex flex-column mt-4 border rounded bg-white shadow-sm pb-5 mb-5"
+        style="height: 100%; width: 100%; max-width: 900px"
+      >
+        <div class="flex-column d-flex align-items-center mt-5">
+          <img
+            style="width: 80px"
+            class=""
+            src="data:image/png;base64,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"
+          />
+          <h4 class="fw-bold">Success Payment</h4>
+        </div>
+
+        <hr
+          class="border border-1 border-secondary mx-auto mt-2"
+          style="width: calc(100% - 200px)"
+        />
+
+        <!-- box1 -->
+        <div class="mx-4">
+          <div class="row">
+            <div class="col">
+              <h4 class="text-danger small text-decoration-underline">
+                Order Detail
+              </h4>
+              <div
+                style="background-color: #e6e6e6"
+                class="p-3 d-flex flex-column shadow-sm border rounded"
+              >
+                <div class="d-flex justify-content-between fw-bold small">
+                  <p class="mb-0">Booking Flight CGK-SIN</p>
+                  <p class="mb-0">1 Qty</p>
+                </div>
+                <div class="d-flex justify-content-between small mt-2">
+                  <p class="mb-0">Subtotal (Include Tax)</p>
+                  <p class="mb-0 fw-bold">IDR 3.336.600</p>
+                </div>
+                <div class="d-flex justify-content-between small mt-2">
+                  <p class="mb-0">Service Fee</p>
+                  <p class="mb-0 fw-bold">IDR 10.000</p>
+                </div>
+                <div x-data="{ open: false }" class="mt-2">
+                  <div
+                    class="d-flex justify-content-between align-items-center small"
+                    @click="open = !open"
+                    style="cursor: pointer"
+                  >
+                    <button
+                      class="btn btn-link text-dark p-0 text-decoration-none text-sm"
+                      type="button"
+                    >
+                      Voucher Discount
+                    </button>
+                    <p
+                      class="mb-0 text-sm rotate-icon"
+                      :class="{ 'open': open }"
+                      x-text="open ? '&#9650;' : '&#9660;'"
+                    ></p>
+                  </div>
+                  <div
+                    class="dropdown-content bg-white"
+                    :class="{ 'open': open }"
+                  >
+                    <div class="d-flex justify-content-between small p-2">
+                      <p class="mb-0 text-sm">Service Fee</p>
+                      <p class="mb-0 fw-bold text-sm">IDR 10.000</p>
+                    </div>
+                  </div>
+                </div>
+                <div x-data="{ open: false }" class="mt-2">
+                  <div
+                    class="d-flex justify-content-between align-items-center small"
+                    @click="open = !open"
+                    style="cursor: pointer"
+                  >
+                    <button
+                      class="btn btn-link text-dark p-0 text-decoration-none text-sm"
+                      type="button"
+                    >
+                      Other Fee
+                    </button>
+                    <p
+                      class="mb-0 text-sm rotate-icon"
+                      :class="{ 'open': open }"
+                      x-text="open ? '&#9650;' : '&#9660;'"
+                    ></p>
+                  </div>
+                  <div
+                    class="dropdown-content bg-white"
+                    :class="{ 'open': open }"
+                  >
+                    <div class="d-flex justify-content-between small p-2">
+                      <p class="mb-0 text-sm">Service Fee</p>
+                      <p class="mb-0 fw-bold text-sm">IDR 10.000</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-between small mt-2">
+                  <p class="mb-0">Order Total</p>
+                  <p class="mb-0 fw-bold">IDR 10.000</p>
+                </div>
+                <div class="d-flex justify-content-between small mt-2">
+                  <p class="mb-0">Point yang didapatkan</p>
+                  <p class="mb-0 fw-bold">48000</p>
+                </div>
+                <div x-data="{ open: false }" class="mt-2">
+                  <div
+                    class="d-flex justify-content-between align-items-center small"
+                    @click="open = !open"
+                    style="cursor: pointer"
+                  >
+                    <button
+                      class="btn btn-link text-dark p-0 text-decoration-none text-sm"
+                      type="button"
+                    >
+                      Invoice Detail
+                    </button>
+                    <p
+                      class="mb-0 text-sm rotate-icon"
+                      :class="{ 'open': open }"
+                      x-text="open ? '&#9650;' : '&#9660;'"
+                    ></p>
+                  </div>
+                  <div
+                    class="dropdown-content bg-white"
+                    :class="{ 'open': open }"
+                  >
+                    <div class="d-flex justify-content-between small p-2">
+                      <p class="mb-0 text-sm">Payment Method</p>
+                      <p class="mb-0 fw-bold text-sm">
+                        Payment Gateway Service
+                      </p>
+                    </div>
+                    <div class="d-flex justify-content-between small p-2">
+                      <p class="mb-0 text-sm">Merchant</p>
+                      <p class="mb-0 fw-bold text-sm">BCA Kredit_(card)</p>
+                    </div>
+                    <div class="d-flex justify-content-between small p-2">
+                      <p class="mb-0 text-sm">Payment Done</p>
+                      <p class="mb-0 fw-bold text-sm">
+                        Fri, 25 May 2024 09:30 AM
+                      </p>
+                    </div>
+                    <div class="d-flex justify-content-between small p-2">
+                      <p class="mb-0 text-sm">Reference</p>
+                      <p class="mb-0 fw-bold text-sm">A-6366</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- box2 -->
+
+              <div
+                style="background-color: #e6e6e6"
+                class="p-3 d-flex flex-column shadow-sm border rounded mt-2"
+              >
+                <h4 class="text-danger small fw-bold">
+                  Wahanatravel Travel - Booking Flight
+                </h4>
+                <div class="d-flex justify-content-between small mt-2">
+                  <p class="mb-0">Order ID :</p>
+                  <p class="mb-0 fw-bold">1124900420</p>
+                </div>
+                <div class="d-flex justify-content-between small mt-2">
+                  <p class="mb-0">Booking Code :</p>
+                  <p class="mb-0 fw-bold">GA126112450GA</p>
+                </div>
+                <div class="d-flex justify-content-between small mt-2">
+                  <p class="mb-0">Customer :</p>
+                  <p class="mb-0 fw-bold">Raka Ardiayansyah</p>
+                </div>
+                <div class="d-flex justify-content-between small mt-2">
+                  <p class="mb-0">Phone No :</p>
+                  <p class="mb-0 fw-bold">0896123445678</p>
+                </div>
+                <div class="d-flex justify-content-between small mt-2">
+                  <p class="mb-0">Email :</p>
+                  <p class="mb-0 fw-bold">Rq2rA@gmail.com</p>
+                </div>
+                <div class="d-flex justify-content-between small mt-2">
+                  <p class="mb-0">Submit Date :</p>
+                  <p class="mb-0 fw-bold">Fri, 25 May 2024 09:30 AM</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- box3 -->
+            <div class="col">
+              <div class="mt-5 d-flex flex-column">
+                <h2
+                  class="fw-bold text-danger text-decoration-underline text-center"
+                >
+                  Payment Detail
+                </h2>
+
+                <p class="fw-bold mt-4 fs-4 m-0">
+                  Thank you for your purchase.
+                </p>
+
+                <p class="fw-semibold fs-4">
+                  Order <span class="text-danger fw-bold">#1124900420</span>
+                </p>
+                <div
+                  style="background-color: #e6e6e6"
+                  class="p-3 d-flex flex-column shadow-sm border rounded mt-2"
+                >
+                  <div class="d-flex align-items-start">
+                    <img
+                      style="
+                        background-color: #ffffff;
+                        width: 40px;
+                        height: 40px;
+                      "
+                      class="rounded-circle me-2 p-2"
+                      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAdVJREFUWEftlz9OwzAUxj+nbS4AoZ2i9gRF6hlgYSCgij8TI1IP0AFmGJBYKzGyFVRBFwa4QyV6gqSeCikXSP8YuSJWmiZK3ARRoXiK9J4/f/6958gmWLNB1swPMkNRFckISRF6KZdL49nsBsAugGLU5ITxDwBvBUVp7lnW0NVaKFlX19sAjhMuJDv9waD0JMyQDWBTVjFh/sigVAszxESAsT4jpJpwscDpxKdtUCoq5S+ZMPShaeqWbV8S4AJAISVjYwZcf2raVdG2HVczliE36alSqeYmk/uktDiVaT5/dmiafW6kq+ti81KG+OS7Wq2QgJagct7rjV0q0oYAdBzHaRwNh7zR50OWlp8K13gslTRVVVsA6lIl48mMEJsw1jAo7biTY9IKo1JnhLQIY+JUcd1YJfM1cWxacal49VcxFIcW3BPk65VAKokNeQSWaD2Xy9s8fmBZ725eUK+E/TpWIuQVC+otb7yr65FU0iTk1VqgJUPltwyJ3vo5lUsnKM4fPnHJ4iwik5MZiqKVEfpXhEYANqJ2lHL8y6BUXJv//pJPSNsYDE7dTS4Ymj+DptNbpig7/itCylS4HH8GvZJcrrlvmvx7PrKXaxTpjFBGKIpAVPwbMKkmNDA2gV4AAAAASUVORK5CYII="
+                    />
+                    <div class="d-flex flex-column flex-grow-1">
+                      <p class="fw-bold text-danger m-0">Email Instruction</p>
+                      <p class="fw-semibold">
+                        Your Account has purchased orders Detail. about your
+                        purchase will be sent to you indufly via email or if you
+                        have already logged in you cas check your account
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="d-flex align-items-center mt-1 justify-content-center"
+                >
+                  <button
+                    class="btn btn-danger btn-sm mt-3 py-2"
+                    style="width: 200px"
+                  >
+                    Go To Homepage &#8594;
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="footer-logo">
+              <i class="fas fa-plane"></i> Wahanatravel
+            </div>
+            <div class="footer-description">
+              Lorem ipsum dolor sit amet consectetur massa pellentesque quis
+              scelerisque pharetra dui nec urna diam aliquet pellentesque et
+              lorem dolor sit.
+            </div>
+            <div class="footer-social-icons mt-3">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="footer-title">Address</div>
+            <div class="footer-link">
+              Jl. Jembatan Tiga, Blok F No. 4 RT. 19 RW. 17, Penjaringan Jakarta
+              Utara - 14440, Indonesia.
+            </div>
+            <div class="footer-link">Office: (021) 662 9569</div>
+            <div class="footer-link">Mobile/Whatsapp: +62 857 2930 9878</div>
+            <div class="footer-link">Email: cs@wahanatravel.com</div>
+            <div class="footer-link">Hotline Tour: +62 811-8227-027</div>
+            <div class="footer-link">Hotline Document: +62 811-8277-003</div>
+            <div class="footer-link">Hotline Visa: +62 811-8277-005</div>
+          </div>
+          <div class="col-md-3">
+            <div class="footer-title">Other Services</div>
+            <a href="#" class="footer-link"
+              ><i class="fas fa-plane"></i> Flight</a
+            >
+            <a href="#" class="footer-link"><i class="fas fa-map"></i> Tour</a>
+            <a href="#" class="footer-link"
+              ><i class="fas fa-car"></i> Car Rental</a
+            >
+            <a href="#" class="footer-link"
+              ><i class="fas fa-briefcase"></i> M.I.C.E</a
+            >
+            <a href="#" class="footer-link"
+              ><i class="fas fa-passport"></i> Visa</a
+            >
+          </div>
+          <div class="col-md-3">
+            <div class="footer-title">About</div>
+            <a href="#" class="footer-link">Promotion</a>
+            <a href="#" class="footer-link">Career</a>
+            <a href="#" class="footer-link">Terms & Conditions</a>
+            <a href="#" class="footer-link">Privacy Policy</a>
+            <a href="#" class="footer-link">Contact Us</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        Copyright © 1999 - 2024 Wahana Travel. All Rights Reserved.
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
